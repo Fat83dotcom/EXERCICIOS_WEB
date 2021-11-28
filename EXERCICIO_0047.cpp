@@ -91,8 +91,8 @@ void mensagemFinal(Jogador *JogadorPerdedor,  int *contadorJogadorGanhador, int 
     cout << "Você perdeu, Jogador" << numeroJogadorGanhador <<" ganhou!!" << endl;
     cout << "A sequência correta é: ";
     JogadorPerdedor->mostra_Dados();
-    cout << "Você conseguiu memorizar " << *contadorJogadorGanhador << " casas." << endl;
-    cout << "O outro jogador conseguiu memorizar " << *contadorJogadorPerdedor << " casas." << endl;
+    cout << "Você conseguiu memorizar " << *contadorJogadorPerdedor << " casas." << endl;
+    cout << "O outro jogador conseguiu memorizar " << *contadorJogadorGanhador << " casas." << endl;
 }
 
 int main(int argc, char const *argv[]) {
