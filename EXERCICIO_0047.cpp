@@ -84,15 +84,16 @@ bool operacaoJogador(Jogador *jogador, int *contador, int numeroJogador){
 
     return (jogador->verifica_Entrada(entradaJogador)) ? limparTela(), true : false;
    
-
 }
 
 void mensagemFinal(Jogador *JogadorPerdedor,  int *contadorJogadorGanhador, int *contadorJogadorPerdedor, int numeroJogadorGanhador) {
     cout << "Você perdeu, Jogador" << numeroJogadorGanhador <<" ganhou!!" << endl;
     cout << "A sequência correta é: ";
     JogadorPerdedor->mostra_Dados();
+    JogadorPerdedor->limpa_Memoria();
     cout << "Você conseguiu memorizar " << *contadorJogadorPerdedor << " casas." << endl;
     cout << "O outro jogador conseguiu memorizar " << *contadorJogadorGanhador << " casas." << endl;
+
 }
 
 int main(int argc, char const *argv[]) {
