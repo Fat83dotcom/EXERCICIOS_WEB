@@ -18,18 +18,18 @@ em módulos; armazene a sequência de números dentro de uma string.
 #include <cstdlib>
 #include <ctime>
 
-#define MAXIMO_NUMEROS 50
-#define TEMPO_ESPERA_SEGUNDOS 5
+const int TempoEsperaSegundos = 5;
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::sprintf;
+using std::atoi;
 
 
 class Jogador {
     private:
-    char *concatenados = new char[MAXIMO_NUMEROS];
+    char *concatenados = new char;
     int entrada_Concatenada;
 
     public:
@@ -66,7 +66,6 @@ int *geradorAleatorio() {
     unsigned semente = time(0);
     srand(semente);
     numeroAleatorio = rand()%10;
-
     return pNumeroAleatorio;
 
 }
@@ -77,7 +76,7 @@ bool operacaoJogador(Jogador *jogador, int *contador, int numeroJogador){
     cout << "Memorize: \n\n";
     jogador->recebe_Escolhas_Aleatorias(geradorAleatorio(), *contador);
     jogador->mostra_Dados();
-    sleep(TEMPO_ESPERA_SEGUNDOS);
+    sleep(TempoEsperaSegundos);
     limparTela();
     cout << "Digite o número mostrado na tela: ";
     cin >> entradaJogador;
@@ -106,12 +105,13 @@ int main(int argc, char const *argv[]) {
     pcontador2 = &contador2;
 
     do{
-        
         if (operacaoJogador(&J_1, pcontador1, 1)) {
             contador1++;
         }
         else {
             mensagemFinal(&J_1, pcontador2, pcontador1, 2);
+            J_1.limpa_Memoria();
+            J_2.limpa_Memoria();
             break;
         }
         if (operacaoJogador(&J_2, pcontador2, 2)) {
@@ -119,6 +119,8 @@ int main(int argc, char const *argv[]) {
         }
         else {
             mensagemFinal(&J_2, pcontador1, pcontador2, 1);
+            J_1.limpa_Memoria();
+            J_2.limpa_Memoria();
             break;
         }
         
